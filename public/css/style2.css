@@ -1,0 +1,156 @@
+/* Palette: #375534, #6B9071, #AEC3B0, #E3EED4 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(145deg, #E3EED4 0%, #D4E5CC 100%);
+    min-height: 100vh;
+    color: #1E2F1E;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Container override pour Laravel */
+.max-w-7xl {
+    max-width: 780px !important;
+}
+
+/* Cards personnalisées qui remplacent bg-white shadow */
+.bg-white {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 32px !important;
+    box-shadow: 
+        0 20px 35px -8px rgba(55, 85, 52, 0.15),
+        0 8px 10px -6px rgba(55, 85, 52, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.bg-white:hover {
+    box-shadow: 0 24px 40px -12px rgba(55, 85, 52, 0.2) !important;
+}
+
+/* Typographie */
+h2, .font-semibold {
+    color: #375534 !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.02em !important;
+}
+
+.text-gray-800 {
+    color: #375534 !important;
+}
+
+.text-gray-600, .text-gray-700 {
+    color: #4A6648 !important;
+}
+
+/* Form elements */
+input, textarea, select {
+    width: 100%;
+    padding: 14px 18px !important;
+    font-size: 1rem !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #AEC3B0 !important;
+    border-radius: 18px !important;
+    outline: none !important;
+    transition: all 0.2s ease !important;
+    color: #1E2F1E !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #6B9071 !important;
+    box-shadow: 0 0 0 4px rgba(107, 144, 113, 0.15), 0 4px 8px rgba(0,0,0,0.02) !important;
+    --tw-ring-shadow: none !important;
+    --tw-ring-offset-shadow: none !important;
+}
+
+/* Labels */
+label {
+    display: block !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    color: #375534 !important;
+    margin-bottom: 8px !important;
+}
+
+/* Boutons */
+button, .inline-flex {
+    border-radius: 40px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Bouton primaire (Save) */
+button[type="submit"], 
+.bg-gray-800,
+button.bg-gray-800 {
+    background: #375534 !important;
+    color: white !important;
+    box-shadow: 0 8px 16px -6px rgba(55, 85, 52, 0.3) !important;
+    border: 1px solid #2A4528 !important;
+    padding: 12px 28px !important;
+}
+
+button[type="submit"]:hover,
+.bg-gray-800:hover {
+    background: #2A4528 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 20px -8px rgba(55, 85, 52, 0.4) !important;
+}
+
+/* Bouton danger (Delete) */
+button.bg-red-600,
+button.bg-red-500,
+.text-red-600 {
+    background: transparent !important;
+    color: #A94442 !important;
+    border: 1.5px solid #E6C2C0 !important;
+    box-shadow: none !important;
+}
+
+button.bg-red-600:hover,
+button.bg-red-500:hover {
+    background: #FFF6F5 !important;
+    border-color: #C44B4A !important;
+    color: #8B2C2A !important;
+}
+
+/* Danger zone card */
+.space-y-6 > div:last-child {
+    border: 1.5px dashed #D4A9A7 !important;
+    background: rgba(255, 250, 250, 0.6) !important;
+    border-radius: 24px !important;
+}
+
+/* Header spacing */
+header, .py-12 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+}
+
+/* Espacement entre les cards */
+.space-y-6 > * + * {
+    margin-top: 1.5rem !important;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .p-4, .sm\:p-8 {
+        padding: 20px !important;
+    }
+    button {
+        width: 100% !important;
+    }
+}

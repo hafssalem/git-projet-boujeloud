@@ -1,0 +1,173 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #f4f7f2;
+  color: #333;
+}
+
+#commune-logo{
+  margin-top:20px;
+
+}
+
+/* HERO HEADER */
+.hero {
+  height: 100vh;
+  background: url("../images/bjloud.jpeg") no-repeat center/cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* DARK OVERLAY */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* NAVBAR */
+.nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 15px;
+  margin: 20px auto;
+  width: 80%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* LINKS */
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  margin: 0 10px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: #4CAF50;
+  color: white;
+}
+
+/* HERO TEXT */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  margin-bottom: 10%;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+}
+
+.hero-content p {
+  font-size: 18px;
+}
+
+/* SECTION FLEX */
+.display-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 30px;
+  padding: 40px;
+}
+
+.display-flex img {
+  width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.display-flex h2 {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.display-flex p {
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+/* CARDS SECTION */
+section {
+  padding: 40px;
+  text-align: center;
+}
+
+section h2 {
+  color: #2e7d32;
+  margin-bottom: 30px;
+}
+
+/* CARD CONTAINER */
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+.card {
+  width: 250px;
+  margin: 15px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 14px;
+  color: #666;
+}
+
+/* FOOTER */
+footer {
+  background: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  margin-top: 40px;
+}
+.map-container {
+  margin: 40px auto;
+  width: 90%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
