@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Acteur;
 use App\Models\Activite;
+use App\Models\Groupe;
 use Illuminate\Http\Request;
 use App\Exports\ActiviteExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -17,23 +18,28 @@ public function export()
     return Excel::download(new ActiviteExport, 'activites.xlsx');
 }
     //  Affichage
-    public function index(Request $request)
-    {  
-        $search = $request->input('search');
+   public function index(Request $request)
+{
+    $search = $request->input('search');
 
-    $activites = Activite::when($search, function ($query, $search) {
-        return $query->where('type_performance', 'like', "%$search%")
-                     ->orWhere('mode_exercice', 'like', "%$search%")
-                     ->orWhere('frequence', 'like', "%$search%");
-    })->paginate(3);
-        return view("projet.activites.index", compact("activites"));
-    }
+    $activites = Activite::with(['acteur', 'groupe'])
+        ->when($search, function ($query, $search) {
+
+            return $query->where('type_performance', 'like', "%$search%")
+                ->orWhere('mode_exercice', 'like', "%$search%")
+                ->orWhere('frequence', 'like', "%$search%");
+        })
+        ->paginate(3);
+
+    return view("projet.activites.index", compact("activites"));
+}
 
     //  Form création
     public function create()
     {
     $acteurs = Acteur::all();
-    return view("projet.activites.create_activite", compact("acteurs"));    }
+    $groupes = Groupe::all();
+    return view("projet.activites.create_activite", compact("acteurs", "groupes"));    }
 
     //  Enregistrement
     public function store(Request $request)
@@ -44,7 +50,8 @@ public function export()
             'frequence' => 'nullable|in:Quotidienne,Hebdomadaire,Occasionnelle,Saisonniere',
             'lieu' => 'nullable|string|max:255',
             'langue' => 'nullable|string|max:50',
-            'id_acteur' => 'required|exists:acteur,id_acteur'
+            'id_acteur' => 'required|exists:acteur,id_acteur',
+            'id_groupe' => 'nullable|exists:groupe,id_groupe'
         ]);
 
         Activite::create([
@@ -53,7 +60,8 @@ public function export()
             "frequence" => $request->frequence,
             "lieu" => $request->lieu,
             "langue" => $request->langue,
-            "id_acteur" => $request->id_acteur
+            "id_acteur" => $request->id_acteur,
+            "id_groupe" => $request->id_groupe
         ]);
 
         return redirect()->route('activites.index')
@@ -63,14 +71,17 @@ public function export()
     //  Affichage détail
     public function show(Activite $activite)
     {
-        return view("projet.activites.show_activite", compact("activite"));
+            $acteurs = Acteur::all();
+            $groupes = Groupe::all();
+        return view("projet.activites.show_activite", compact("activite", "acteurs", "groupes"));
     }
 
     //  Form modification
     public function edit(Activite $activite)
     {
     $acteurs = Acteur::all();
-    return view("projet.activites.modifier_activite", compact("activite", "acteurs"));    }
+    $groupes = Groupe::all();
+    return view("projet.activites.modifier_activite", compact("activite", "acteurs", "groupes"));    }
 
     //  Update
     public function update(Request $request, Activite $activite)
@@ -81,8 +92,7 @@ public function export()
             'frequence' => 'nullable|in:Quotidienne,Hebdomadaire,Occasionnelle,Saisonniere',
             'lieu' => 'nullable|string|max:255',
             'langue' => 'nullable|string|max:50',
-            'id_acteur' => 'required|exists:acteur,id_acteur'
-        ]);
+            'id_acteur' => 'required|exists:acteur,id_acteur'        ]);
 
         $activite->update([
             "type_performance" => $request->type_performance,
@@ -90,7 +100,8 @@ public function export()
             "frequence" => $request->frequence,
             "lieu" => $request->lieu,
             "langue" => $request->langue,
-            "id_acteur" => $request->id_acteur
+            "id_acteur" => $request->id_acteur,
+            "id_groupe" => $request->id_groupe
         ]);
 
         return redirect()->route('activites.index')

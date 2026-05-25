@@ -32,9 +32,9 @@
         <a href="{{ route('roles.index') }}">
             <i class="bi bi-shield"></i> Roles
         </a>
-        <a href="{{ route('permissions.index') }}">
+        {{-- <a href="{{ route('permissions.index') }}">
             <i class="bi bi-key"></i> Permissions
-        </a>
+        </a> --}}
         <a href="{{ route('evenements.stats') }}">
             <i class="bi bi-bar-chart"></i> Statistics
         </a>
@@ -46,7 +46,7 @@
             <option value="{{ route('groupes.index') }}">👥 Groupes</option>
             <option value="{{ route('spectacles.index') }}">🎪 Spectacles</option>
             <option value="{{ route('evenements.index') }}">📅 Événements</option>
-            <option value="{{ route('autorisations.index') }}">✅ Autorisations</option>
+            {{-- <option value="{{ route('autorisations.index') }}">✅ Autorisations</option> --}}
             <option value="{{ route('sanctions.index') }}">⚠️ Sanctions</option>
         </select>
     @endrole
@@ -66,7 +66,7 @@
             <option value="{{ route('groupes.index') }}">👥 Groupes</option>
             <option value="{{ route('spectacles.index') }}">🎪 Spectacles</option>
             <option value="{{ route('evenements.index') }}">📅 Événements</option>
-            <option value="{{ route('autorisations.index') }}">✅ Autorisations</option>
+            {{-- <option value="{{ route('autorisations.index') }}">✅ Autorisations</option> --}}
             <option value="{{ route('sanctions.index') }}">⚠️ Sanctions</option>
         </select>
     @endrole
@@ -82,7 +82,7 @@
         <select class="form-select shadow rounded-3" onchange="goToPage(this)">
             <option selected disabled>📋 Les tableaux</option>
             <option value="{{ route('evenements.index') }}">📅 Événements</option>
-            <option value="{{ route('autorisations.index') }}">✅ Autorisations</option>
+            {{-- <option value="{{ route('autorisations.index') }}">✅ Autorisations</option> --}}
             <option value="{{ route('sanctions.index') }}">⚠️ Sanctions</option>
         </select>
     @endrole

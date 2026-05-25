@@ -55,6 +55,13 @@ img{
         <p><strong>	Nom :</strong> {{ $groupe->nom }}</p>
         <p><strong>	La date de creation :</strong> {{ $groupe->date_creation }}</p>
         <p><strong>Description :</strong> {{ $groupe->description }}</p>
+        <p><strong>Acteurs :</strong>
+            @forelse($groupe->acteurs as $acteur)
+                <span class="badge bg-primary">{{ $acteur->nom_prenom }}</span>
+            @empty
+                <span class="text-danger">Aucun membre</span>
+            @endforelse
+        </p>
         <a href="{{ route('groupes.index') }}" class="btn btn-secondary mt-3">⬅️ Retour</a>
     </div>
 </div>

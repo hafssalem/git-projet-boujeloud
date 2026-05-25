@@ -139,6 +139,15 @@ p strong {
         </option>
     @endforeach
 </select>
+<select name="id_groupe" class="form-control mb-2">
+    <option value="">Choisir Un Groupe </option>
+
+    @foreach($groupes as $groupe)
+        <option value="{{ $groupe->id_groupe }}">
+            {{ $groupe->nom }}
+        </option>
+    @endforeach
+</select>
         <button class="btn btn-success">💾 Enregistrer</button>
     </form>
 </div>

@@ -100,7 +100,7 @@ h3{
         <th>Fréquence</th>
         <th>Lieu</th>
         <th>Langue</th>
-        <th>Acteur</th>
+        <th>Acteur ou Groupe</th>
         <th>Actions</th>
         </tr>
         @foreach ($activites as $activite )
@@ -110,7 +110,9 @@ h3{
                 <td>{{ $activite->frequence }}</td>
                 <td>{{ $activite->lieu }}</td>
                 <td>{{ $activite->langue }}</td>
-                <td>{{ $activite->acteur->nom_prenom ?? '---' }}</td>
+                <td>
+                    {{ $activite->acteur->nom_prenom ?? $activite->groupe->nom ?? '---' }}
+                </td>
                 <td>
 
 <form method="post" action="{{ route('activites.destroy', $activite) }}">

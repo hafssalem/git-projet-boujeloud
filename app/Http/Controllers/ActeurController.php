@@ -141,7 +141,7 @@ $acteur->update([
         if ($acteur->photo) {
             Storage::disk('public')->delete('photos/' . $acteur->photo);
         }
-
+        $acteur->groupes()->detach();
         $acteur->delete();
 
         return redirect()->route('acteurs.index')

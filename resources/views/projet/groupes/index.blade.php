@@ -97,6 +97,7 @@ h3{
             <th>Nom</th>
             <th>Date</th>
             <th>Description</th>
+            <th>Membres</th>
             <th>Actions</th>
         </tr>
 
@@ -112,6 +113,15 @@ h3{
             <td>{{ $groupe->nom }}</td>
             <td>{{ $groupe->date_creation }}</td>
             <td>{{ $groupe->description }}</td>
+            <td>
+    @forelse($groupe->acteurs as $acteur)
+        <span class="badge bg-primary">
+            {{ $acteur->nom_prenom }}
+        </span>
+    @empty
+        <span class="text-danger">Aucun membre</span>
+    @endforelse
+</td>
 
             <td>
                 <a href="{{ route('groupes.edit', $groupe->id_groupe) }}" class="btn btn-warning btn-sm">✏️</a>

@@ -143,6 +143,18 @@ p strong {
     @endforeach
 </select>
 
+<label for="id_groupe">Groupe :</label>
+
+<select name="id_groupe" class="form-control mb-2">
+    @foreach($groupes as $groupe)
+        <option value="{{ $groupe->id_groupe }}"
+            {{ $activite->id_groupe == $groupe->id_groupe ? 'selected' : '' }}>
+            
+            {{ $groupe->nom }}
+        </option>
+    @endforeach
+</select>
+
         <button class="btn btn-primary">✏️ Modifier</button>
     </form>
 </div>

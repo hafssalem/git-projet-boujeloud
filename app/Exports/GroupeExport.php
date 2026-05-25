@@ -27,7 +27,8 @@ class GroupeExport implements
         return [
             'nom',
             'date_creation',
-            'description'
+            'description',
+            'goupe membres'
         ];
     }
 
@@ -37,6 +38,7 @@ class GroupeExport implements
             $groupe->nom,
             $groupe->date_creation,
             $groupe->description,
+            $groupe->acteurs->pluck('nom_prenom')->implode(', ')
         ];
     }
 

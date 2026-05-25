@@ -22,5 +22,9 @@ class Activite extends Model
     {
         return $this->belongsTo(Acteur::class, 'id_acteur');
     }
+    public function groupe()
+{
+    return $this->belongsTo(Groupe::class,'id_groupe');
+}
 
 }

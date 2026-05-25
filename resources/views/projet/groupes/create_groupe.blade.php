@@ -136,6 +136,21 @@ p strong {
             <label>Description</label>
             <input type="text" name="description" class="form-control">
         </div>
+        @foreach($acteurs as $acteur)
+        <div class="form-check">
+            <input
+        type="checkbox"
+        name="acteurs[]"
+        value="{{ $acteur->id_acteur }}"
+        class="form-check-input"
+
+       {{ isset($groupe) && $groupe->acteurs->contains($acteur->id_acteur) ? 'checked' : '' }}>
+
+        <label class="form-check-label">
+        {{ $acteur->nom_prenom }}
+        </label>
+         </div>
+         @endforeach
         </div>
 
         <button type="submit" class="btn btn-success">💾 Enregistrer</button>
