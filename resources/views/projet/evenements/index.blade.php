@@ -83,14 +83,15 @@ h3{
     <button type="submit" class="btn btn-success">Rechercher</button>
 
 </form>
-    
+    @role('admin|gestionnaire')
        <a class="btn bg-success text-white" href="{{ route('evenements.create') }}" >Ajouter un nouveau evenement</a>
 <p>
 
     <br>
 <a href="/export-evenements" class="btn btn-success">
     📥 Exporter Excel
-</a>
+</a> 
+@endrole
     @isset($evenements)
     <table class="table-acteurs">
         <tr>
@@ -100,7 +101,9 @@ h3{
         <th>Saison</th>
         <th>Statut</th>
         <th>Titre de Spectacle</th>
+        @role('admin|gestionnaire')
         <th>Actions</th>
+        @endrole
         </tr>
         @foreach ($evenements as $evenement )
         <tr>
@@ -110,7 +113,9 @@ h3{
                 <td>{{ $evenement->saison }}</td>
                 <td>{{ $evenement->statut }}</td>
                 <td>{{ $evenement->spectacle->titre ?? '---' }}</td>
+                @role('admin|gestionnaire')
                 <td>
+                
 
 <form method="POST" action="{{ route('evenements.destroy', $evenement->id) }}">
     @csrf
@@ -126,6 +131,7 @@ h3{
 </form>
 
                 </td>
+@endrole
         </tr> 
         @endforeach
         

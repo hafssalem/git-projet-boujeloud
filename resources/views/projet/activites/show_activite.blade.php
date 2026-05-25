@@ -51,7 +51,17 @@ img{
         <p><strong>	Fréquence :</strong> {{ $activite->frequence }}</p>
         <p><strong>Lieu :</strong> {{ $activite->lieu }}</p>
         <p><strong>Langue :</strong> {{ $activite->langue }}</p>
-        <p><strong>Acteur :</strong> {{ $activite->acteur->nom_prenom }}</p>
+        <p>            
+            @if ($activite->acteur)
+            <strong>Acteur:</strong> 
+             {{ $activite->acteur->nom_prenom }}
+            @elseif ($activite->groupe)
+            <strong>Groupe :</strong> 
+               {{ $activite->groupe->nom }}
+            @else
+              ---
+            @endif 
+        </p>
         <a href="{{ route('activites.index') }}" class="btn btn-secondary mt-3">⬅️ Retour</a>
     </div>
 </div>

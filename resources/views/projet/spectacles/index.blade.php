@@ -83,6 +83,7 @@ h3{
     <button type="submit" class="btn btn-success">Rechercher</button>
 
 </form>
+@role('admin|gestionnaire')
        <a class="btn bg-success text-white" href="{{ route('spectacles.create') }}" >Ajouter un nouveau spectacle</a>
 <p>
 
@@ -90,6 +91,7 @@ h3{
 <a href="/export-spectacles" class="btn btn-success">
     📥 Exporter Excel
 </a>
+@endrole
     @isset($spectacles)
     <table class="table-acteurs">
         <tr>
@@ -103,7 +105,9 @@ h3{
         <th>Équipements</th>
         <th>Caractère</th>
         <th>Classification</th>
+        @role('admin|gestionnaire')
         <th>Actions</th>
+        @endrole
         </tr>
         @foreach ($spectacles as $spectacle )
         <tr>
@@ -117,6 +121,7 @@ h3{
                 <td>{{ $spectacle->equipements }}</td>
                 <td>{{ $spectacle->caractere }}</td>
                 <td>{{ $spectacle->classification }}</td>
+                @role('admin|gestionnaire')
                 <td>
 
 <form method="post" action="{{ route('spectacles.destroy', $spectacle) }}">
@@ -127,8 +132,8 @@ h3{
     <input type="submit" class="btn btn-danger btn-sm" value="🗑️"
     onclick="return confirm('Confirmez vous la suppression de cette spectacle?')" />
 </form>
-
                 </td>
+        @endrole
         </tr> 
         @endforeach
 

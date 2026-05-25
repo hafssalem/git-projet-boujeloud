@@ -24,5 +24,9 @@ class Groupe extends Model
         return $this->belongsToMany(Acteur::class, 'membre_groupe', 'id_groupe', 'id_acteur')
                     ->withPivot('role');
     }
+        public function activites()
+    {
+            return $this->hasMany(Activite::class,'id_groupe');
+    }
 
 }

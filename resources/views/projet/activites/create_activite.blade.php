@@ -129,29 +129,76 @@ p strong {
         <input type="text" name="lieu" class="form-control mb-2" placeholder="Lieu">
         <label for="langue">Langue:</label>
         <input type="text" name="langue" class="form-control mb-2" placeholder="Langue">
-<label for="id_acteur">Acteur :</label>
-<select name="id_acteur" class="form-control mb-2">
-    <option value="">Choisir Acteur </option>
 
-    @foreach($acteurs as $acteur)
-        <option value="{{ $acteur->id_acteur }}">
-            {{ $acteur->nom_prenom }}
-        </option>
-    @endforeach
-</select>
-<select name="id_groupe" class="form-control mb-2">
-    <option value="">Choisir Un Groupe </option>
+<div class="mb-3">
+    <label>Type de lien</label><br>
 
-    @foreach($groupes as $groupe)
-        <option value="{{ $groupe->id_groupe }}">
-            {{ $groupe->nom }}
-        </option>
-    @endforeach
-</select>
+    <input type="radio" name="type_lien" value="acteur" checked>
+    Acteur
+
+    <input type="radio" name="type_lien" value="groupe">
+    Groupe
+</div>
+
+<div class="mb-3" id="acteur_box">
+    <label>Choisir Acteur</label>
+    <select name="id_acteur" class="form-control">
+        <option value="">-- choisir --</option>
+        @foreach($acteurs as $acteur)
+            <option value="{{ $acteur->id_acteur }}">
+                {{ $acteur->nom_prenom }}
+            </option>
+        @endforeach
+    </select>
+</div>
+
+<div class="mb-3" id="groupe_box" style="display:none;">
+    <label>Choisir Groupe</label>
+    <select name="id_groupe" class="form-control">
+        <option value="">-- choisir --</option>
+        @foreach($groupes as $groupe)
+            <option value="{{ $groupe->id_groupe }}">
+                {{ $groupe->nom }}
+            </option>
+        @endforeach
+    </select>
+</div>
         <button class="btn btn-success">💾 Enregistrer</button>
     </form>
 </div>
 </div>
+
+<script>
+document.querySelectorAll('input[name="type_lien"]').forEach((radio) => {
+    radio.addEventListener('change', function () {
+
+        if (this.value === 'acteur') {
+            document.getElementById('acteur_box').style.display = 'block';
+            document.getElementById('groupe_box').style.display = 'none';
+        }
+
+        if (this.value === 'groupe') {
+            document.getElementById('acteur_box').style.display = 'none';
+            document.getElementById('groupe_box').style.display = 'block';
+        }
+    });
+});
+</script><script>
+document.querySelectorAll('input[name="type_lien"]').forEach((radio) => {
+    radio.addEventListener('change', function () {
+
+        if (this.value === 'acteur') {
+            document.getElementById('acteur_box').style.display = 'block';
+            document.getElementById('groupe_box').style.display = 'none';
+        }
+
+        if (this.value === 'groupe') {
+            document.getElementById('acteur_box').style.display = 'none';
+            document.getElementById('groupe_box').style.display = 'block';
+        }
+    });
+});
+</script>
 </body>
 </html>
 @endsection

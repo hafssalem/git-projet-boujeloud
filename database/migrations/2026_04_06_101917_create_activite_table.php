@@ -22,12 +22,19 @@ public function up()
         $table->string('langue')->nullable();
 
         $table->unsignedBigInteger('id_acteur');
+        $table->unsignedBigInteger('id_groupe')->nullable();
 
         $table->foreign('id_acteur')
               ->references('id_acteur')
               ->on('acteur')
               ->onDelete('cascade')
               ->onUpdate('cascade');
+              
+        $table->foreign('id_groupe')
+      ->references('id_groupe')
+      ->on('groupe')
+      ->onDelete('cascade')
+      ->onUpdate('cascade');
         $table->timestamps();
     });
     

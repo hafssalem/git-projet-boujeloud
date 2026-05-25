@@ -50,18 +50,29 @@ public function export()
             'frequence' => 'nullable|in:Quotidienne,Hebdomadaire,Occasionnelle,Saisonniere',
             'lieu' => 'nullable|string|max:255',
             'langue' => 'nullable|string|max:50',
-            'id_acteur' => 'required|exists:acteur,id_acteur',
+            'type_lien' => 'required|in:acteur,groupe',
+            'id_acteur' => 'nullable|exists:acteur,id_acteur',
             'id_groupe' => 'nullable|exists:groupe,id_groupe'
         ]);
 
+        $id_acteur = null;
+        $id_groupe = null;
+
+           if ($request->type_lien === 'acteur') {
+               $id_acteur = $request->id_acteur;
+            }
+
+            if ($request->type_lien === 'groupe') {
+               $id_groupe = $request->id_groupe;
+            }
         Activite::create([
             "type_performance" => $request->type_performance,
             "mode_exercice" => $request->mode_exercice,
             "frequence" => $request->frequence,
             "lieu" => $request->lieu,
             "langue" => $request->langue,
-            "id_acteur" => $request->id_acteur,
-            "id_groupe" => $request->id_groupe
+            "id_acteur" => $id_acteur,
+            "id_groupe" => $id_groupe
         ]);
 
         return redirect()->route('activites.index')
@@ -92,7 +103,21 @@ public function export()
             'frequence' => 'nullable|in:Quotidienne,Hebdomadaire,Occasionnelle,Saisonniere',
             'lieu' => 'nullable|string|max:255',
             'langue' => 'nullable|string|max:50',
-            'id_acteur' => 'required|exists:acteur,id_acteur'        ]);
+            'id_acteur' => 'nullable|exists:acteur,id_acteur',
+            'id_groupe' => 'nullable|exists:groupe,id_groupe'
+            ]);
+            $id_acteur = null;
+            $id_groupe = null;
+
+          if ($request->type_lien === 'acteur') {
+
+              $id_acteur = $request->id_acteur;
+            }
+
+           if ($request->type_lien === 'groupe') {
+
+                 $id_groupe = $request->id_groupe;
+                }
 
         $activite->update([
             "type_performance" => $request->type_performance,
@@ -100,8 +125,8 @@ public function export()
             "frequence" => $request->frequence,
             "lieu" => $request->lieu,
             "langue" => $request->langue,
-            "id_acteur" => $request->id_acteur,
-            "id_groupe" => $request->id_groupe
+            "id_acteur" => $id_acteur,
+            "id_groupe" => $id_groupe
         ]);
 
         return redirect()->route('activites.index')

@@ -83,6 +83,7 @@ h3{
     <button type="submit" class="btn btn-success">Rechercher</button>
 
 </form>
+@role('admin|gestionnaire')
        <a class="btn bg-success text-white" href="{{ route('activites.create') }}" >Ajouter une nouvelle activite</a>
 
 <p>
@@ -92,6 +93,7 @@ h3{
     <a href="/export-activites" class="btn btn-success">
     📥 Exporter Excel
 </a>
+@endrole
     @isset($activites)
     <table class="table-actvites">
         <tr>
@@ -101,7 +103,9 @@ h3{
         <th>Lieu</th>
         <th>Langue</th>
         <th>Acteur ou Groupe</th>
+        @role('admin|gestionnaire')
         <th>Actions</th>
+        @endrole
         </tr>
         @foreach ($activites as $activite )
         <tr>
@@ -111,20 +115,29 @@ h3{
                 <td>{{ $activite->lieu }}</td>
                 <td>{{ $activite->langue }}</td>
                 <td>
-                    {{ $activite->acteur->nom_prenom ?? $activite->groupe->nom ?? '---' }}
-                </td>
-                <td>
-
-<form method="post" action="{{ route('activites.destroy', $activite) }}">
-    @csrf
-    @method('DELETE')
-    <a href="{{ route('activites.show', $activite) }}" class="btn btn-primary btn-sm">🔍</a>
-    <a href="{{ route('activites.edit', $activite) }}" class="btn btn-warning btn-sm">✏️</a>
+            @if ($activite->acteur)
+             {{ $activite->acteur->nom_prenom }}
+            @elseif ($activite->groupe)
+               {{ $activite->groupe->nom }}
+            @else
+              ---
+            @endif        
+        </td>
+        @role('admin|gestionnaire')
+        <td>
+            <form method="post" action="{{ route('activites.destroy', $activite) }}">
+                @csrf
+                @method('DELETE')
+                <a href="{{ route('activites.show', $activite) }}" class="btn btn-primary btn-sm">🔍</a>
+                <a href="{{ route('activites.edit', $activite) }}" class="btn btn-warning btn-sm">✏️</a>
+            </form>
+        
+        
     <input type="submit" class="btn btn-danger btn-sm" value="🗑️"
     onclick="return confirm('Confirmez vous la suppression de cette activite?')" />
 </form>
-
-                </td>
+@endrole
+            </td>    
         </tr> 
         @endforeach
     </table>

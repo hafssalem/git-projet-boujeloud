@@ -131,34 +131,131 @@ p strong {
 <label for="langue">Langue:</label>
         <input type="text" name="langue" class="form-control mb-2"value="{{ $activite->langue }}">
         
-<label for="id_acteur">Acteur :</label>
+{{-- TYPE LIEN --}}
+<div class="mb-3">
 
-<select name="id_acteur" class="form-control mb-2">
-    @foreach($acteurs as $acteur)
-        <option value="{{ $acteur->id_acteur }}"
-            {{ $activite->id_acteur == $acteur->id_acteur ? 'selected' : '' }}>
-            
-            {{ $acteur->nom_prenom }}
-        </option>
-    @endforeach
-</select>
+    <label>Type de lien</label><br>
 
-<label for="id_groupe">Groupe :</label>
+    {{-- ACTEUR --}}
+    <input
+        type="radio"
+        name="type_lien"
+        value="acteur"
 
-<select name="id_groupe" class="form-control mb-2">
-    @foreach($groupes as $groupe)
-        <option value="{{ $groupe->id_groupe }}"
-            {{ $activite->id_groupe == $groupe->id_groupe ? 'selected' : '' }}>
-            
-            {{ $groupe->nom }}
-        </option>
-    @endforeach
-</select>
+        {{ $activite->id_acteur ? 'checked' : '' }}
+    >
+    Acteur
+
+    {{-- GROUPE --}}
+    <input
+        type="radio"
+        name="type_lien"
+        value="groupe"
+
+        {{ $activite->id_groupe ? 'checked' : '' }}
+    >
+    Groupe
+
+</div>
+
+{{-- BOX ACTEUR --}}
+<div
+    class="mb-3"
+    id="acteur_box"
+
+    style="{{ $activite->id_groupe ? 'display:none;' : '' }}"
+>
+
+    <label>Choisir Acteur</label>
+
+    <select name="id_acteur" class="form-control">
+
+        <option value="">-- choisir --</option>
+
+        @foreach($acteurs as $acteur)
+
+            <option
+                value="{{ $acteur->id_acteur }}"
+
+                {{ $activite->id_acteur == $acteur->id_acteur ? 'selected' : '' }}
+            >
+
+                {{ $acteur->nom_prenom }}
+
+            </option>
+
+        @endforeach
+
+    </select>
+
+</div>
+
+{{-- BOX GROUPE --}}
+<div
+    class="mb-3"
+    id="groupe_box"
+
+    style="{{ $activite->id_acteur ? 'display:none;' : '' }}"
+>
+
+    <label>Choisir Groupe</label>
+
+    <select name="id_groupe" class="form-control">
+
+        <option value="">-- choisir --</option>
+
+        @foreach($groupes as $groupe)
+
+            <option
+                value="{{ $groupe->id_groupe }}"
+
+                {{ $activite->id_groupe == $groupe->id_groupe ? 'selected' : '' }}
+            >
+
+                {{ $groupe->nom }}
+
+            </option>
+
+        @endforeach
+
+    </select>
+
+</div>
 
         <button class="btn btn-primary">✏️ Modifier</button>
     </form>
 </div>
 </div>
+
+<script>
+
+document.querySelectorAll('input[name="type_lien"]')
+.forEach((radio) => {
+
+    radio.addEventListener('change', function () {
+
+        if (this.value === 'acteur') {
+
+            document.getElementById('acteur_box')
+                .style.display = 'block';
+
+            document.getElementById('groupe_box')
+                .style.display = 'none';
+        }
+
+        if (this.value === 'groupe') {
+
+            document.getElementById('acteur_box')
+                .style.display = 'none';
+
+            document.getElementById('groupe_box')
+                .style.display = 'block';
+        }
+    });
+
+});
+
+</script>
 </body>
 </html>
 @endsection

@@ -71,7 +71,7 @@
         </select>
     @endrole
 
-    @role('agent')
+    @role('superviseur')
         <a href="{{route('dashboard.index')}}">
             <i class="bi bi-house-door"></i> Home
         </a>
@@ -81,8 +81,11 @@
 
         <select class="form-select shadow rounded-3" onchange="goToPage(this)">
             <option selected disabled>📋 Les tableaux</option>
+            <option value="{{ route('acteurs.index') }}">🎭 Acteurs</option>
+            <option value="{{ route('activites.index') }}">🎯 Activités</option>
+            <option value="{{ route('groupes.index') }}">👥 Groupes</option>
+            <option value="{{ route('spectacles.index') }}">🎪 Spectacles</option>
             <option value="{{ route('evenements.index') }}">📅 Événements</option>
-            {{-- <option value="{{ route('autorisations.index') }}">✅ Autorisations</option> --}}
             <option value="{{ route('sanctions.index') }}">⚠️ Sanctions</option>
         </select>
     @endrole

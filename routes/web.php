@@ -106,8 +106,8 @@ Route::get('/dashboard', [CardsController::class, 'index'])->name('dashboard.ind
     Route::get('/gestionnaire/dashboard', [CardsController::class, 'index']);
 });
 // agent 
-    Route::middleware(['auth', 'role:agent'])->group(function () {
-    Route::get('/agent/dashboard', [CardsController::class, 'index']);
+    Route::middleware(['auth', 'role:superviseur'])->group(function () {
+    Route::get('/superviseur/dashboard', [CardsController::class, 'index']);
 });
 
 // Route::get('/dashboard/home', [CardsController::class, 'index']);

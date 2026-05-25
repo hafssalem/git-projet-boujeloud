@@ -84,8 +84,9 @@ h3{
     <button type="submit" class="btn btn-success">Rechercher</button>
 
 </form>
-    
+    @role('admin|gestionnaire')
        <a class="btn bg-success text-white" href="{{ route('acteurs.create') }}" >Ajouter un nouveau acteur</a>
+    
 <p>
 
 
@@ -93,6 +94,7 @@ h3{
 <a href="/export-acteurs" class="btn btn-success">
     📥 Exporter Excel
 </a>
+@endrole
     @isset($acteurs)
     <table class="table-acteurs">
         <tr>
@@ -106,7 +108,9 @@ h3{
         <th>Email</th>
         <th>Date d'inscription</th>
         <th>Statut</th>
+        @role('admin|gestionnaire')
         <th>Actions</th>
+        @endrole
         </tr>
         @foreach ($acteurs as $acteur )
         <tr>
@@ -128,6 +132,7 @@ h3{
                 <td>{{ $acteur->email }}</td>
                 <td>{{ $acteur->date_inscription }}</td>
                 <td>{{ $acteur->statut }}</td>
+                @role('admin|gestionnaire')
                 <td>
 
 <form method="post" action="{{ route('acteurs.destroy', $acteur->id_acteur) }}">
@@ -139,6 +144,7 @@ h3{
     onclick="return confirm('Confirmez vous la suppression de ce acteur?')" />
 </form>
  </td>
+                @endrole
         </tr> 
         @endforeach
 

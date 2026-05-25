@@ -15,7 +15,7 @@ class Activite extends Model
 
     protected $fillable = [
         'type_performance', 'mode_exercice', 'frequence',
-        'lieu', 'langue', 'id_acteur'
+        'lieu', 'langue', 'id_acteur', 'id_groupe'
     ];
 
     public function acteur()
@@ -26,5 +26,6 @@ class Activite extends Model
 {
     return $this->belongsTo(Groupe::class,'id_groupe');
 }
+
 
 }

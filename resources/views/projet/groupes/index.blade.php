@@ -82,7 +82,7 @@ h3{
     <button type="submit" class="btn btn-success">Rechercher</button>
 
 </form>
-
+@role('admin|gestionnaire')
        <a class="btn bg-success text-white" href="{{ route('groupes.create') }}" >Ajouter un nouveau groupe</a>
        <p>
         <br>
@@ -91,6 +91,7 @@ h3{
         <a href="/export-groupes" class="btn btn-success">
     📥 Exporter Excel
 </a>
+@endrole
     <table class="table-groupes">
         <tr>
             <th>Logo</th>
@@ -98,7 +99,9 @@ h3{
             <th>Date</th>
             <th>Description</th>
             <th>Membres</th>
+            @role('admin|gestionnaire')
             <th>Actions</th>
+            @endrole
         </tr>
 
         @foreach($groupes as $groupe)
@@ -122,7 +125,7 @@ h3{
         <span class="text-danger">Aucun membre</span>
     @endforelse
 </td>
-
+@role('admin|gestionnaire')
             <td>
                 <a href="{{ route('groupes.edit', $groupe->id_groupe) }}" class="btn btn-warning btn-sm">✏️</a>
                 <a href="{{ route('groupes.show', $groupe->id_groupe) }}" class="btn btn-primary btn-sm">🔍</a>
@@ -134,6 +137,7 @@ h3{
                     <button class="btn btn-danger btn-sm">🗑️</button>
                 </form>
             </td>
+            @endrole
         </tr>
         @endforeach
         
