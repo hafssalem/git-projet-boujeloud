@@ -25,5 +25,14 @@ User::create([
     'email' => 'admin2@gmail.com',
     'password' => Hash::make('12345678'),
 ]);
+<<<<<<< HEAD
+=======
+
+User::create([
+    'name' => 'chaymae',
+    'email' => 'chaymae@gmail.com',
+    'password' => Hash::make('chaymae123'),
+]);
+>>>>>>> cb156e4 (Premier commit)
     }
 }

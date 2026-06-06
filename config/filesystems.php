@@ -76,7 +76,10 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
     ],
+<<<<<<< HEAD
     
+=======
+>>>>>>> cb156e4 (Premier commit)
     'links' => [
 public_path('storage') => storage_path('app/public'),
 public_path('photos') => storage_path('app/photos'),
@@ -85,4 +88,8 @@ public_path('photos') => storage_path('app/photos'),
 public_path('storage') => storage_path('app/public'),
 public_path('logos') => storage_path('app/logos'),
 ]
+<<<<<<< HEAD
+=======
+
+>>>>>>> cb156e4 (Premier commit)
 ];

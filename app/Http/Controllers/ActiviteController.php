@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Acteur;
 use App\Models\Activite;
+<<<<<<< HEAD
 use App\Models\Groupe;
+=======
+>>>>>>> cb156e4 (Premier commit)
 use Illuminate\Http\Request;
 use App\Exports\ActiviteExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,6 +21,7 @@ public function export()
     return Excel::download(new ActiviteExport, 'activites.xlsx');
 }
     //  Affichage
+<<<<<<< HEAD
    public function index(Request $request)
 {
     $search = $request->input('search');
@@ -33,13 +37,30 @@ public function export()
 
     return view("projet.activites.index", compact("activites"));
 }
+=======
+    public function index(Request $request)
+    {  
+        $search = $request->input('search');
+
+    $activites = Activite::when($search, function ($query, $search) {
+        return $query->where('type_performance', 'like', "%$search%")
+                     ->orWhere('mode_exercice', 'like', "%$search%")
+                     ->orWhere('frequence', 'like', "%$search%");
+    })->paginate(3);
+        return view("projet.activites.index", compact("activites"));
+    }
+>>>>>>> cb156e4 (Premier commit)
 
     //  Form création
     public function create()
     {
     $acteurs = Acteur::all();
+<<<<<<< HEAD
     $groupes = Groupe::all();
     return view("projet.activites.create_activite", compact("acteurs", "groupes"));    }
+=======
+    return view("projet.activites.create_activite", compact("acteurs"));    }
+>>>>>>> cb156e4 (Premier commit)
 
     //  Enregistrement
     public function store(Request $request)
@@ -50,6 +71,7 @@ public function export()
             'frequence' => 'nullable|in:Quotidienne,Hebdomadaire,Occasionnelle,Saisonniere',
             'lieu' => 'nullable|string|max:255',
             'langue' => 'nullable|string|max:50',
+<<<<<<< HEAD
             'type_lien' => 'required|in:acteur,groupe',
             'id_acteur' => 'nullable|exists:acteur,id_acteur',
             'id_groupe' => 'nullable|exists:groupe,id_groupe'
@@ -65,14 +87,23 @@ public function export()
             if ($request->type_lien === 'groupe') {
                $id_groupe = $request->id_groupe;
             }
+=======
+            'id_acteur' => 'required|exists:acteur,id_acteur'
+        ]);
+
+>>>>>>> cb156e4 (Premier commit)
         Activite::create([
             "type_performance" => $request->type_performance,
             "mode_exercice" => $request->mode_exercice,
             "frequence" => $request->frequence,
             "lieu" => $request->lieu,
             "langue" => $request->langue,
+<<<<<<< HEAD
             "id_acteur" => $id_acteur,
             "id_groupe" => $id_groupe
+=======
+            "id_acteur" => $request->id_acteur
+>>>>>>> cb156e4 (Premier commit)
         ]);
 
         return redirect()->route('activites.index')
@@ -82,17 +113,25 @@ public function export()
     //  Affichage détail
     public function show(Activite $activite)
     {
+<<<<<<< HEAD
             $acteurs = Acteur::all();
             $groupes = Groupe::all();
         return view("projet.activites.show_activite", compact("activite", "acteurs", "groupes"));
+=======
+        return view("projet.activites.show_activite", compact("activite"));
+>>>>>>> cb156e4 (Premier commit)
     }
 
     //  Form modification
     public function edit(Activite $activite)
     {
     $acteurs = Acteur::all();
+<<<<<<< HEAD
     $groupes = Groupe::all();
     return view("projet.activites.modifier_activite", compact("activite", "acteurs", "groupes"));    }
+=======
+    return view("projet.activites.modifier_activite", compact("activite", "acteurs"));    }
+>>>>>>> cb156e4 (Premier commit)
 
     //  Update
     public function update(Request $request, Activite $activite)
@@ -103,6 +142,7 @@ public function export()
             'frequence' => 'nullable|in:Quotidienne,Hebdomadaire,Occasionnelle,Saisonniere',
             'lieu' => 'nullable|string|max:255',
             'langue' => 'nullable|string|max:50',
+<<<<<<< HEAD
             'id_acteur' => 'nullable|exists:acteur,id_acteur',
             'id_groupe' => 'nullable|exists:groupe,id_groupe'
             ]);
@@ -118,6 +158,10 @@ public function export()
 
                  $id_groupe = $request->id_groupe;
                 }
+=======
+            'id_acteur' => 'required|exists:acteur,id_acteur'
+        ]);
+>>>>>>> cb156e4 (Premier commit)
 
         $activite->update([
             "type_performance" => $request->type_performance,
@@ -125,8 +169,12 @@ public function export()
             "frequence" => $request->frequence,
             "lieu" => $request->lieu,
             "langue" => $request->langue,
+<<<<<<< HEAD
             "id_acteur" => $id_acteur,
             "id_groupe" => $id_groupe
+=======
+            "id_acteur" => $request->id_acteur
+>>>>>>> cb156e4 (Premier commit)
         ]);
 
         return redirect()->route('activites.index')

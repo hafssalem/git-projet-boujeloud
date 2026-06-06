@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Groupe;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use App\Models\Acteur;
+=======
+>>>>>>> cb156e4 (Premier commit)
 use App\Exports\GroupeExport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -14,6 +17,7 @@ class GroupeController extends Controller
     // Affichage
     public function index(Request $request)
     {  
+<<<<<<< HEAD
     $search = $request->input('search');
 
     $groupes = Groupe::with('acteurs')
@@ -24,11 +28,21 @@ class GroupeController extends Controller
         ->paginate(3);
 
     return view("projet.groupes.index", compact("groupes"));
+=======
+        $search = $request->input('search');
+
+    $groupes = Groupe::when($search, function ($query, $search) {
+        return $query->where('nom', 'like', "%$search%")
+                     ->orWhere('description', 'like', "%$search%");
+    })->paginate(3);
+        return view("projet.groupes.index", compact("groupes"));
+>>>>>>> cb156e4 (Premier commit)
     }
 
     // Form création
     public function create()
     {
+<<<<<<< HEAD
         $acteurs = Acteur::all();
         return view("projet.groupes.create_groupe", compact('acteurs'));
     }
@@ -72,14 +86,54 @@ class GroupeController extends Controller
     public function show(Groupe $groupe)
     {
         $groupe->load('acteurs');
+=======
+        return view("projet.groupes.create_groupe");
+    }
+
+    // Enregistrement
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nom' => 'required|string|max:100',
+            'date_creation' => 'nullable|date',
+            'description' => 'nullable|string',
+            'logo' => 'image|mimes:png,jpg,jpeg|max:8000'
+        ]);
+        
+        $logoName = null;
+
+        if ($request->hasFile('logo')) {
+            $logoName = time() . '.' . $request->logo->extension();
+            $request->logo->storeAs('logos', $logoName, 'public');
+        }
+
+        Groupe::create([
+            'nom' => $request->nom,
+            'date_creation' => $request->date_creation,
+            'description' => $request->description, // ✔️ تصحيح
+            'logo' => $logoName
+        ]);
+
+        return redirect()->route('groupes.index')
+            ->with('success', 'Groupe ajouté avec succès.');
+    }
+
+    // Show
+    public function show(Groupe $groupe)
+    {
+>>>>>>> cb156e4 (Premier commit)
         return view("projet.groupes.show", compact("groupe"));
     }
 
     // Edit
     public function edit(Groupe $groupe)
     {
+<<<<<<< HEAD
         $acteurs = Acteur::all();
         return view("projet.groupes.modifier_groupe", compact("groupe", "acteurs"));
+=======
+        return view("projet.groupes.modifier_groupe", compact("groupe"));
+>>>>>>> cb156e4 (Premier commit)
     }
 
     // Update
@@ -89,18 +143,30 @@ class GroupeController extends Controller
             'nom' => 'required|string|max:100',
             'date_creation' => 'nullable|date',
             'description' => 'nullable|string',
+<<<<<<< HEAD
             'logo' => 'image|mimes:png,jpg,jpeg|max:8000',
             'acteurs' => 'required|array|min:2'
+=======
+            'logo' => 'image|mimes:png,jpg,jpeg|max:8000'
+>>>>>>> cb156e4 (Premier commit)
         ]);
 
         $logoName = $groupe->logo;
 
         if ($request->hasFile('logo')) {
 
+<<<<<<< HEAD
+=======
+            // حذف القديم
+>>>>>>> cb156e4 (Premier commit)
             if ($groupe->logo) {
                 Storage::disk('public')->delete('logos/' . $groupe->logo);
             }
 
+<<<<<<< HEAD
+=======
+            // حفظ الجديد
+>>>>>>> cb156e4 (Premier commit)
             $logoName = time() . '.' . $request->logo->extension();
             $request->logo->storeAs('logos', $logoName, 'public');
         }
@@ -112,8 +178,11 @@ class GroupeController extends Controller
             'logo' => $logoName
         ]);
 
+<<<<<<< HEAD
         $groupe->acteurs()->sync($request->acteurs);
 
+=======
+>>>>>>> cb156e4 (Premier commit)
         return redirect()->route('groupes.index')
             ->with('success', 'Groupe modifié.');
     }
@@ -125,7 +194,11 @@ class GroupeController extends Controller
         if ($groupe->logo) {
             Storage::disk('public')->delete('logos/' . $groupe->logo);
         }
+<<<<<<< HEAD
         $groupe->acteurs()->detach();
+=======
+
+>>>>>>> cb156e4 (Premier commit)
         $groupe->delete();
 
         return redirect()->route('groupes.index')

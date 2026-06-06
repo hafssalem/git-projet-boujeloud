@@ -83,7 +83,10 @@ h3{
     <button type="submit" class="btn btn-success">Rechercher</button>
 
 </form>
+<<<<<<< HEAD
 @role('admin|gestionnaire')
+=======
+>>>>>>> cb156e4 (Premier commit)
        <a class="btn bg-success text-white" href="{{ route('spectacles.create') }}" >Ajouter un nouveau spectacle</a>
 <p>
 
@@ -91,7 +94,10 @@ h3{
 <a href="/export-spectacles" class="btn btn-success">
     📥 Exporter Excel
 </a>
+<<<<<<< HEAD
 @endrole
+=======
+>>>>>>> cb156e4 (Premier commit)
     @isset($spectacles)
     <table class="table-acteurs">
         <tr>
@@ -105,9 +111,13 @@ h3{
         <th>Équipements</th>
         <th>Caractère</th>
         <th>Classification</th>
+<<<<<<< HEAD
         @role('admin|gestionnaire')
         <th>Actions</th>
         @endrole
+=======
+        <th>Actions</th>
+>>>>>>> cb156e4 (Premier commit)
         </tr>
         @foreach ($spectacles as $spectacle )
         <tr>
@@ -121,7 +131,10 @@ h3{
                 <td>{{ $spectacle->equipements }}</td>
                 <td>{{ $spectacle->caractere }}</td>
                 <td>{{ $spectacle->classification }}</td>
+<<<<<<< HEAD
                 @role('admin|gestionnaire')
+=======
+>>>>>>> cb156e4 (Premier commit)
                 <td>
 
 <form method="post" action="{{ route('spectacles.destroy', $spectacle) }}">
@@ -132,8 +145,13 @@ h3{
     <input type="submit" class="btn btn-danger btn-sm" value="🗑️"
     onclick="return confirm('Confirmez vous la suppression de cette spectacle?')" />
 </form>
+<<<<<<< HEAD
                 </td>
         @endrole
+=======
+
+                </td>
+>>>>>>> cb156e4 (Premier commit)
         </tr> 
         @endforeach
 

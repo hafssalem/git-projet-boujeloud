@@ -83,7 +83,11 @@
 
     <!-- LEFT IMAGE -->
     <div class="left">
+<<<<<<< HEAD
         <img src="{{ asset('images/Commune_de_Fes.png') }}" >
+=======
+        <img src="{{ asset('images/Commune_de_Fes.png') }}" alt="image">
+>>>>>>> cb156e4 (Premier commit)
     </div>
 
     <!-- RIGHT FORM -->

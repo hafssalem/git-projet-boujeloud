@@ -71,23 +71,34 @@ h3{
     <button type="submit" class="btn btn-success">Rechercher</button>
 
 </form>
+<<<<<<< HEAD
 @role('admin|gestionnaire')
+=======
+>>>>>>> cb156e4 (Premier commit)
 <a href="{{ route('sanctions.create') }}" class="btn btn-success mb-2">Ajouter un nouveau sanction</a>
 
 <br>
 <a href="/export-sanctions" class="btn btn-success">
     📥 Exporter Excel
 </a>
+<<<<<<< HEAD
 @endrole
+=======
+
+>>>>>>> cb156e4 (Premier commit)
 <table class="table">
     <tr>
         <th>Type</th>
         <th>Date</th>
         <th>Description</th>
         <th>Acteur</th>
+<<<<<<< HEAD
         @role('admin|gestionnaire')
         <th>Actions</th>
         @endrole
+=======
+        <th>Actions</th>
+>>>>>>> cb156e4 (Premier commit)
     </tr>
 
     @foreach($sanctions as $s)
@@ -96,7 +107,11 @@ h3{
         <td>{{ $s->date }}</td>
         <td>{{ $s->description }}</td>
         <td>{{ $s->acteur->nom_prenom ?? '' }}</td>
+<<<<<<< HEAD
 @role('admin|gestionnaire')
+=======
+
+>>>>>>> cb156e4 (Premier commit)
         <td>
             <a href="{{ route('sanctions.edit', $s->id) }}" class="btn btn-primary">✏️</a>
 
@@ -106,7 +121,10 @@ h3{
                 <button class="btn btn-danger"  onclick="return confirm('Confirmez vous la suppression de cette sanction?')">🗑️</button>
             </form>
         </td>
+<<<<<<< HEAD
 @endrole
+=======
+>>>>>>> cb156e4 (Premier commit)
     </tr>
     @endforeach
 

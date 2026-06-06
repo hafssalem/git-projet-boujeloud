@@ -143,6 +143,7 @@ p strong {
                 <input type="text" name="description" class="form-control"
                        value="{{ $groupe->description }}">
             </div>
+<<<<<<< HEAD
             @foreach($acteurs as $acteur)
         <div class="form-check">
 
@@ -162,6 +163,8 @@ p strong {
         </div>
     @endforeach
 
+=======
+>>>>>>> cb156e4 (Premier commit)
             <button type="submit" class="btn btn-primary">💾 Modifier</button>
         </form>
     </div>
