@@ -121,7 +121,6 @@ class GroupeController extends Controller
     // Delete
     public function destroy(Groupe $groupe)
     {
-        // نحيد حتى الصورة
         if ($groupe->logo) {
             Storage::disk('public')->delete('logos/' . $groupe->logo);
         }
