@@ -30,11 +30,7 @@ class ActiviteExport implements FromCollection, WithHeadings, WithMapping, WithS
             'frequence',
             'Lieu',
             'langue',
-<<<<<<< HEAD
             'acteur ou groupe',
-=======
-            'id_acteur',
->>>>>>> cb156e4 (Premier commit)
         ];
     }
 
@@ -47,11 +43,7 @@ class ActiviteExport implements FromCollection, WithHeadings, WithMapping, WithS
             $activite->frequence,
             $activite->lieu,
             $activite->langue,
-<<<<<<< HEAD
             $activite->id_acteur ? $activite->acteur->nom_prenom : ($activite->id_groupe ? $activite->groupe->nom : 'N/A'),
-=======
-            $activite->id_acteur,
->>>>>>> cb156e4 (Premier commit)
         ];
     }
 

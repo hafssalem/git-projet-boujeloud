@@ -105,7 +105,6 @@ p strong {
     </style>
     <div class="container mt-4">
         
-<<<<<<< HEAD
         @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -116,8 +115,6 @@ p strong {
         </div>
     @endif
     
-=======
->>>>>>> cb156e4 (Premier commit)
     <h3> ✏️ Modifier un acteur</h3>
 
     <div class="form-card">

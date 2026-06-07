@@ -83,23 +83,15 @@ h3{
     <button type="submit" class="btn btn-success">Rechercher</button>
 
 </form>
-<<<<<<< HEAD
     @role('admin|gestionnaire')
-=======
-    
->>>>>>> cb156e4 (Premier commit)
        <a class="btn bg-success text-white" href="{{ route('evenements.create') }}" >Ajouter un nouveau evenement</a>
 <p>
 
     <br>
 <a href="/export-evenements" class="btn btn-success">
     📥 Exporter Excel
-<<<<<<< HEAD
 </a> 
 @endrole
-=======
-</a>
->>>>>>> cb156e4 (Premier commit)
     @isset($evenements)
     <table class="table-acteurs">
         <tr>
@@ -109,13 +101,9 @@ h3{
         <th>Saison</th>
         <th>Statut</th>
         <th>Titre de Spectacle</th>
-<<<<<<< HEAD
         @role('admin|gestionnaire')
         <th>Actions</th>
         @endrole
-=======
-        <th>Actions</th>
->>>>>>> cb156e4 (Premier commit)
         </tr>
         @foreach ($evenements as $evenement )
         <tr>
@@ -125,13 +113,9 @@ h3{
                 <td>{{ $evenement->saison }}</td>
                 <td>{{ $evenement->statut }}</td>
                 <td>{{ $evenement->spectacle->titre ?? '---' }}</td>
-<<<<<<< HEAD
                 @role('admin|gestionnaire')
                 <td>
                 
-=======
-                <td>
->>>>>>> cb156e4 (Premier commit)
 
 <form method="POST" action="{{ route('evenements.destroy', $evenement->id) }}">
     @csrf
@@ -147,10 +131,7 @@ h3{
 </form>
 
                 </td>
-<<<<<<< HEAD
 @endrole
-=======
->>>>>>> cb156e4 (Premier commit)
         </tr> 
         @endforeach
         

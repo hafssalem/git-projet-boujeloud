@@ -136,7 +136,6 @@ p strong {
             <label>Description</label>
             <input type="text" name="description" class="form-control">
         </div>
-<<<<<<< HEAD
         @foreach($acteurs as $acteur)
         <div class="form-check">
             <input
@@ -152,8 +151,6 @@ p strong {
         </label>
          </div>
          @endforeach
-=======
->>>>>>> cb156e4 (Premier commit)
         </div>
 
         <button type="submit" class="btn btn-success">💾 Enregistrer</button>

@@ -32,16 +32,9 @@
         <a href="{{ route('roles.index') }}">
             <i class="bi bi-shield"></i> Roles
         </a>
-<<<<<<< HEAD
         {{-- <a href="{{ route('permissions.index') }}">
             <i class="bi bi-key"></i> Permissions
         </a> --}}
-=======
-        <a href="{{ route('permissions.index') }}">
-            <i class="bi bi-key"></i> Permissions
-        </a>
-       </a>
->>>>>>> cb156e4 (Premier commit)
         <a href="{{ route('evenements.stats') }}">
             <i class="bi bi-bar-chart"></i> Statistics
         </a>
@@ -53,11 +46,7 @@
             <option value="{{ route('groupes.index') }}">👥 Groupes</option>
             <option value="{{ route('spectacles.index') }}">🎪 Spectacles</option>
             <option value="{{ route('evenements.index') }}">📅 Événements</option>
-<<<<<<< HEAD
             {{-- <option value="{{ route('autorisations.index') }}">✅ Autorisations</option> --}}
-=======
-            <option value="{{ route('autorisations.index') }}">✅ Autorisations</option>
->>>>>>> cb156e4 (Premier commit)
             <option value="{{ route('sanctions.index') }}">⚠️ Sanctions</option>
         </select>
     @endrole
@@ -66,13 +55,10 @@
         <a href="{{route('dashboard.index')}}">
             <i class="bi bi-house-door"></i> Home
         </a>
-<<<<<<< HEAD
         <a href="{{ route('evenements.stats') }}">
             <i class="bi bi-bar-chart"></i> Statistics
         </a>
 
-=======
->>>>>>> cb156e4 (Premier commit)
         <select class="form-select shadow rounded-3" onchange="goToPage(this)">
             <option selected disabled>📋 Les tableaux</option>
             <option value="{{ route('acteurs.index') }}">🎭 Acteurs</option>
@@ -80,16 +66,11 @@
             <option value="{{ route('groupes.index') }}">👥 Groupes</option>
             <option value="{{ route('spectacles.index') }}">🎪 Spectacles</option>
             <option value="{{ route('evenements.index') }}">📅 Événements</option>
-<<<<<<< HEAD
             {{-- <option value="{{ route('autorisations.index') }}">✅ Autorisations</option> --}}
-=======
-            <option value="{{ route('autorisations.index') }}">✅ Autorisations</option>
->>>>>>> cb156e4 (Premier commit)
             <option value="{{ route('sanctions.index') }}">⚠️ Sanctions</option>
         </select>
     @endrole
 
-<<<<<<< HEAD
     @role('superviseur')
         <a href="{{route('dashboard.index')}}">
             <i class="bi bi-house-door"></i> Home
@@ -105,16 +86,6 @@
             <option value="{{ route('groupes.index') }}">👥 Groupes</option>
             <option value="{{ route('spectacles.index') }}">🎪 Spectacles</option>
             <option value="{{ route('evenements.index') }}">📅 Événements</option>
-=======
-    @role('agent')
-        <a href="{{route('dashboard.index')}}">
-            <i class="bi bi-house-door"></i> Home
-        </a>
-        <select class="form-select shadow rounded-3" onchange="goToPage(this)">
-            <option selected disabled>📋 Les tableaux</option>
-            <option value="{{ route('evenements.index') }}">📅 Événements</option>
-            <option value="{{ route('autorisations.index') }}">✅ Autorisations</option>
->>>>>>> cb156e4 (Premier commit)
             <option value="{{ route('sanctions.index') }}">⚠️ Sanctions</option>
         </select>
     @endrole

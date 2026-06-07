@@ -101,17 +101,10 @@ p strong {
         @csrf
         @method('PUT')
         <label for="date_debut">Date de début:</label>
-<<<<<<< HEAD
         <input type="date" name="date_debut" class="form-control mb-2" value="{{ $evenement->date_debut }}">
 
         <label for="date_fin">Date de fin:</label>
         <input type="date" name="date_fin" class="form-control mb-2" value="{{ $evenement->date_fin }}">
-=======
-        <input type="datetime-local" name="date_debut" class="form-control mb-2" value="{{ $evenement->date_debut }}">
-
-        <label for="date_fin">Date de fin:</label>
-        <input type="datetime-local" name="date_fin" class="form-control mb-2" value="{{ $evenement->date_fin }}">
->>>>>>> cb156e4 (Premier commit)
 
         <label for="saison">Saison:</label>
         <input type="text" name="saison" class="form-control mb-2" value="{{ $evenement->saison }}">

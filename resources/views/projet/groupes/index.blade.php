@@ -68,7 +68,6 @@ h3{
 }
 </style>
 <div class="container mt-4">
-<<<<<<< HEAD
     @if ($message = Session::get('success'))
 <div class="alert alert-success">
 <p>{{ $message }}</p>
@@ -76,9 +75,6 @@ h3{
 @endif
     <h3>Liste des Groupes</h3>
 
-=======
-    <h3>Liste des Groupes</h3>
->>>>>>> cb156e4 (Premier commit)
     <br>
     <form method="GET" action="{{ route('groupes.index') }}" class="mb-3 d-flex">
         @csrf
@@ -86,11 +82,7 @@ h3{
     <button type="submit" class="btn btn-success">Rechercher</button>
 
 </form>
-<<<<<<< HEAD
 @role('admin|gestionnaire')
-=======
-
->>>>>>> cb156e4 (Premier commit)
        <a class="btn bg-success text-white" href="{{ route('groupes.create') }}" >Ajouter un nouveau groupe</a>
        <p>
         <br>
@@ -99,24 +91,17 @@ h3{
         <a href="/export-groupes" class="btn btn-success">
     📥 Exporter Excel
 </a>
-<<<<<<< HEAD
 @endrole
-=======
->>>>>>> cb156e4 (Premier commit)
     <table class="table-groupes">
         <tr>
             <th>Logo</th>
             <th>Nom</th>
             <th>Date</th>
             <th>Description</th>
-<<<<<<< HEAD
             <th>Membres</th>
             @role('admin|gestionnaire')
             <th>Actions</th>
             @endrole
-=======
-            <th>Actions</th>
->>>>>>> cb156e4 (Premier commit)
         </tr>
 
         @foreach($groupes as $groupe)
@@ -131,7 +116,6 @@ h3{
             <td>{{ $groupe->nom }}</td>
             <td>{{ $groupe->date_creation }}</td>
             <td>{{ $groupe->description }}</td>
-<<<<<<< HEAD
             <td>
     @forelse($groupe->acteurs as $acteur)
         <span class="badge bg-primary">
@@ -142,9 +126,6 @@ h3{
     @endforelse
 </td>
 @role('admin|gestionnaire')
-=======
-
->>>>>>> cb156e4 (Premier commit)
             <td>
                 <a href="{{ route('groupes.edit', $groupe->id_groupe) }}" class="btn btn-warning btn-sm">✏️</a>
                 <a href="{{ route('groupes.show', $groupe->id_groupe) }}" class="btn btn-primary btn-sm">🔍</a>
@@ -156,10 +137,7 @@ h3{
                     <button class="btn btn-danger btn-sm">🗑️</button>
                 </form>
             </td>
-<<<<<<< HEAD
             @endrole
-=======
->>>>>>> cb156e4 (Premier commit)
         </tr>
         @endforeach
         

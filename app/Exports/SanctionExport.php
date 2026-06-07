@@ -28,7 +28,7 @@ class SanctionExport implements FromCollection, WithHeadings, WithMapping, WithS
             'type',
             'date',
             'description',
-            'id_acteur'
+            'nom_prenom_acteur'
         ];
     }
 
@@ -39,7 +39,7 @@ class SanctionExport implements FromCollection, WithHeadings, WithMapping, WithS
             $sanction->type,
             $sanction->date,
             $sanction->description,
-            $sanction->id_acteur,
+            $sanction->acteur->nom_prenom ?? 'N/A',
         ];
     }
 

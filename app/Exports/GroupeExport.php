@@ -27,12 +27,8 @@ class GroupeExport implements
         return [
             'nom',
             'date_creation',
-<<<<<<< HEAD
             'description',
             'goupe membres'
-=======
-            'description'
->>>>>>> cb156e4 (Premier commit)
         ];
     }
 
@@ -42,10 +38,7 @@ class GroupeExport implements
             $groupe->nom,
             $groupe->date_creation,
             $groupe->description,
-<<<<<<< HEAD
             $groupe->acteurs->pluck('nom_prenom')->implode(', ')
-=======
->>>>>>> cb156e4 (Premier commit)
         ];
     }
 

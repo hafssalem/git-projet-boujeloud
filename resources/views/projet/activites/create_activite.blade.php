@@ -129,7 +129,6 @@ p strong {
         <input type="text" name="lieu" class="form-control mb-2" placeholder="Lieu">
         <label for="langue">Langue:</label>
         <input type="text" name="langue" class="form-control mb-2" placeholder="Langue">
-<<<<<<< HEAD
 
 <div class="mb-3">
     <label>Type de lien</label><br>
@@ -164,23 +163,10 @@ p strong {
         @endforeach
     </select>
 </div>
-=======
-<label for="id_acteur">Acteur :</label>
-<select name="id_acteur" class="form-control mb-2">
-    <option value="">Choisir Acteur </option>
-
-    @foreach($acteurs as $acteur)
-        <option value="{{ $acteur->id_acteur }}">
-            {{ $acteur->nom_prenom }}
-        </option>
-    @endforeach
-</select>
->>>>>>> cb156e4 (Premier commit)
         <button class="btn btn-success">💾 Enregistrer</button>
     </form>
 </div>
 </div>
-<<<<<<< HEAD
 
 <script>
 document.querySelectorAll('input[name="type_lien"]').forEach((radio) => {
@@ -213,8 +199,6 @@ document.querySelectorAll('input[name="type_lien"]').forEach((radio) => {
     });
 });
 </script>
-=======
->>>>>>> cb156e4 (Premier commit)
 </body>
 </html>
 @endsection
