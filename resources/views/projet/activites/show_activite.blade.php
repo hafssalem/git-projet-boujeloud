@@ -51,6 +51,7 @@ img{
         <p><strong>	Fréquence :</strong> {{ $activite->frequence }}</p>
         <p><strong>Lieu :</strong> {{ $activite->lieu }}</p>
         <p><strong>Langue :</strong> {{ $activite->langue }}</p>
+<<<<<<< HEAD
         <p>            
             @if ($activite->acteur)
             <strong>Acteur:</strong> 
@@ -63,6 +64,10 @@ img{
             @endif 
         </p>
         <a href="{{ route('activites.index') }}" class="btn btn-secondary mt-3">⬅️ Retour</a>
+=======
+        <p><strong>Acteur :</strong> {{ $activite->acteur->nom_prenom }}</p>
+        <a href="{{ route('acteurs.index') }}" class="btn btn-secondary mt-3">⬅️ Retour</a>
+>>>>>>> cb156e4 (Premier commit)
     </div>
 </div>
 </body>

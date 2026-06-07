@@ -131,6 +131,7 @@ p strong {
 <label for="langue">Langue:</label>
         <input type="text" name="langue" class="form-control mb-2"value="{{ $activite->langue }}">
         
+<<<<<<< HEAD
 {{-- TYPE LIEN --}}
 <div class="mb-3">
 
@@ -221,11 +222,25 @@ p strong {
     </select>
 
 </div>
+=======
+<label for="id_acteur">Acteur :</label>
+
+<select name="id_acteur" class="form-control mb-2">
+    @foreach($acteurs as $acteur)
+        <option value="{{ $acteur->id_acteur }}"
+            {{ $activite->id_acteur == $acteur->id_acteur ? 'selected' : '' }}>
+            
+            {{ $acteur->nom_prenom }}
+        </option>
+    @endforeach
+</select>
+>>>>>>> cb156e4 (Premier commit)
 
         <button class="btn btn-primary">✏️ Modifier</button>
     </form>
 </div>
 </div>
+<<<<<<< HEAD
 
 <script>
 
@@ -256,6 +271,8 @@ document.querySelectorAll('input[name="type_lien"]')
 });
 
 </script>
+=======
+>>>>>>> cb156e4 (Premier commit)
 </body>
 </html>
 @endsection

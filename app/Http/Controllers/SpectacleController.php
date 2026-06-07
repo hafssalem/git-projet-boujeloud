@@ -10,7 +10,10 @@ use Maatwebsite\Excel\Facades\Excel;
 class SpectacleController extends Controller
 {
     // Affichage
+<<<<<<< HEAD
 
+=======
+>>>>>>> cb156e4 (Premier commit)
     public function index(Request $request)
     {  
         $search = $request->input('search');

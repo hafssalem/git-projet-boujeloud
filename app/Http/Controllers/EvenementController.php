@@ -6,6 +6,7 @@ use App\Models\Evenement;
 use App\Models\Spectacle;
 use Illuminate\Http\Request;
 use App\Exports\EvenementExport;
+<<<<<<< HEAD
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 class EvenementController extends Controller
@@ -30,6 +31,13 @@ class EvenementController extends Controller
 
     return view('projet.evenements.stats', compact('statuts', 'months'));
 }
+=======
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+
+class EvenementController extends Controller
+{
+>>>>>>> cb156e4 (Premier commit)
     
    public function index(Request $request)
     {  
@@ -131,4 +139,24 @@ class EvenementController extends Controller
 {
     return Excel::download(new EvenementExport, 'evenements.xlsx');
 }
+<<<<<<< HEAD
+=======
+
+public function statsEvenements()
+{
+    $statuts = DB::table('evenement') // ✅ صحيحة
+        ->select('statut', DB::raw('COUNT(*) as total'))
+        ->groupBy('statut')
+        ->pluck('total', 'statut');
+
+    $months = DB::table('evenement') // ✅ صحيحة
+        ->select(DB::raw('COUNT(*) as total'), DB::raw('MONTH(date_debut) as month'))
+        ->whereNotNull('date_debut')
+        ->groupBy('month')
+        ->orderBy('month')
+        ->pluck('total', 'month');
+
+    return view('projet.evenements.stats', compact('statuts', 'months'));
+}
+>>>>>>> cb156e4 (Premier commit)
 }

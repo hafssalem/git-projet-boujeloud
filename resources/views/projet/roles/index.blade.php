@@ -66,14 +66,22 @@ h3{
 <a class="btn bg-success text-white" href="{{ route('roles.create') }}" class="btn" >Ajouter Role</a> 
 <table class="table">
     <tr>
+<<<<<<< HEAD
       
+=======
+        <th>ID</th>
+>>>>>>> cb156e4 (Premier commit)
         <th>Nom</th>
         <th>Actions</th>
     </tr>
 
     @foreach($roles as $role)
     <tr>
+<<<<<<< HEAD
       
+=======
+        <td>{{ $role->id }}</td>
+>>>>>>> cb156e4 (Premier commit)
         <td>{{ $role->name }}</td>
         <td>
             <a class="btn btn-success" href="{{ route('roles.edit',$role->id) }}">Edit</a>

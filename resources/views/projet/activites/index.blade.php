@@ -83,7 +83,10 @@ h3{
     <button type="submit" class="btn btn-success">Rechercher</button>
 
 </form>
+<<<<<<< HEAD
 @role('admin|gestionnaire')
+=======
+>>>>>>> cb156e4 (Premier commit)
        <a class="btn bg-success text-white" href="{{ route('activites.create') }}" >Ajouter une nouvelle activite</a>
 
 <p>
@@ -93,7 +96,10 @@ h3{
     <a href="/export-activites" class="btn btn-success">
     📥 Exporter Excel
 </a>
+<<<<<<< HEAD
 @endrole
+=======
+>>>>>>> cb156e4 (Premier commit)
     @isset($activites)
     <table class="table-actvites">
         <tr>
@@ -102,10 +108,15 @@ h3{
         <th>Fréquence</th>
         <th>Lieu</th>
         <th>Langue</th>
+<<<<<<< HEAD
         <th>Acteur ou Groupe</th>
         @role('admin|gestionnaire')
         <th>Actions</th>
         @endrole
+=======
+        <th>Acteur</th>
+        <th>Actions</th>
+>>>>>>> cb156e4 (Premier commit)
         </tr>
         @foreach ($activites as $activite )
         <tr>
@@ -114,6 +125,7 @@ h3{
                 <td>{{ $activite->frequence }}</td>
                 <td>{{ $activite->lieu }}</td>
                 <td>{{ $activite->langue }}</td>
+<<<<<<< HEAD
                 <td>
             @if ($activite->acteur)
              {{ $activite->acteur->nom_prenom }}
@@ -138,6 +150,21 @@ h3{
 </form>
 @endrole
             </td>    
+=======
+                <td>{{ $activite->acteur->nom_prenom ?? '---' }}</td>
+                <td>
+
+<form method="post" action="{{ route('activites.destroy', $activite) }}">
+    @csrf
+    @method('DELETE')
+    <a href="{{ route('activites.show', $activite) }}" class="btn btn-primary btn-sm">🔍</a>
+    <a href="{{ route('activites.edit', $activite) }}" class="btn btn-warning btn-sm">✏️</a>
+    <input type="submit" class="btn btn-danger btn-sm" value="🗑️"
+    onclick="return confirm('Confirmez vous la suppression de cette activite?')" />
+</form>
+
+                </td>
+>>>>>>> cb156e4 (Premier commit)
         </tr> 
         @endforeach
     </table>

@@ -14,7 +14,10 @@ use App\Http\Controllers\SanctionController;
 use App\Http\Controllers\SpectacleController;
 use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\CardsController;
+<<<<<<< HEAD
 use App\Http\Controllers\Auth\PasswordController;
+=======
+>>>>>>> cb156e4 (Premier commit)
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -48,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+<<<<<<< HEAD
     
 // stats 
 
@@ -55,6 +59,12 @@ Route::get('/evenements/stats', [EvenementController::class, 'statsEvenements'])
     ->name('evenements.stats');
 
     // resources 
+=======
+    Route::get('/evenements/stats', [EvenementController::class, 'statsEvenements'])->name('evenements.stats');
+
+    // resources
+   
+>>>>>>> cb156e4 (Premier commit)
     Route::resource('acteurs', ActeurController::class);
     Route::resource('activites', ActiviteController::class);
     Route::resource('groupes', GroupeController::class);
@@ -64,6 +74,10 @@ Route::get('/evenements/stats', [EvenementController::class, 'statsEvenements'])
     Route::resource('sanctions', SanctionController::class);
     Route::resource('permissions', PermissionController::class);
     Route::resource('roles', RoleController::class);
+<<<<<<< HEAD
+=======
+    Route::resource('statistic', ActeurController::class);
+>>>>>>> cb156e4 (Premier commit)
 
     
     Route::get('/export-acteurs', [ActeurController::class, 'export']);
@@ -75,7 +89,10 @@ Route::get('/evenements/stats', [EvenementController::class, 'statsEvenements'])
     Route::get('/export-sanctions', [SanctionController::class, 'export']);
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> cb156e4 (Premier commit)
     // ✅ users (مرة وحدة فقط)
     Route::resource('users', UserRoleController::class)
         ->middleware('role:admin');
@@ -95,6 +112,10 @@ Route::get('/evenements/stats', [EvenementController::class, 'statsEvenements'])
     // Route::get('/agent/dashboard', function () {
     //     return view('dashboard.home');
     // })->middleware('role:agent');
+<<<<<<< HEAD
+=======
+
+>>>>>>> cb156e4 (Premier commit)
 Route::get('/dashboard', [CardsController::class, 'index'])->name('dashboard.index');
 
     // admin
@@ -102,6 +123,7 @@ Route::get('/dashboard', [CardsController::class, 'index'])->name('dashboard.ind
     Route::get('/admin/dashboard', [CardsController::class, 'index']);
 });
 // gestionnaire 
+<<<<<<< HEAD
     Route::middleware(['auth', 'role:gestionnaire'])->group(function () {
     Route::get('/gestionnaire/dashboard', [CardsController::class, 'index']);
 });
@@ -111,5 +133,15 @@ Route::get('/dashboard', [CardsController::class, 'index'])->name('dashboard.ind
 });
 
 // Route::get('/dashboard/home', [CardsController::class, 'index']);
+=======
+    Route::middleware(['auth', 'role:admin|gestionnaire'])->group(function () {
+    Route::get('/gestionnaire/dashboard', [CardsController::class, 'index']);
+});
+// agent 
+    Route::middleware(['auth', 'role:admin|agent'])->group(function () {
+    Route::get('/agent/dashboard', [CardsController::class, 'index']);
+});
+
+>>>>>>> cb156e4 (Premier commit)
 
 });

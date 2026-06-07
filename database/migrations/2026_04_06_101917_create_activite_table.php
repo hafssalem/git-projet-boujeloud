@@ -22,19 +22,25 @@ public function up()
         $table->string('langue')->nullable();
 
         $table->unsignedBigInteger('id_acteur');
+<<<<<<< HEAD
         $table->unsignedBigInteger('id_groupe')->nullable();
+=======
+>>>>>>> cb156e4 (Premier commit)
 
         $table->foreign('id_acteur')
               ->references('id_acteur')
               ->on('acteur')
               ->onDelete('cascade')
               ->onUpdate('cascade');
+<<<<<<< HEAD
               
         $table->foreign('id_groupe')
       ->references('id_groupe')
       ->on('groupe')
       ->onDelete('cascade')
       ->onUpdate('cascade');
+=======
+>>>>>>> cb156e4 (Premier commit)
         $table->timestamps();
     });
     

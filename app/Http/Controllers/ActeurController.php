@@ -11,8 +11,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ActeurController extends Controller
 {
+<<<<<<< HEAD
     //
 
+=======
+    
+>>>>>>> cb156e4 (Premier commit)
 public function export()
 {
     return Excel::download(new ActeurExport, 'acteurs.xlsx');
@@ -23,9 +27,15 @@ public function export()
         $search = $request->input('search');
 
     $acteurs = Acteur::when($search, function ($query, $search) {
+<<<<<<< HEAD
                     $query->where('nom_prenom', 'like', '%'. $search . '%')
                      ->orWhere('cin_passport', 'like', '%'. $search . '%')
                      ->orWhere('email', 'like', '%'. $search . '%');
+=======
+        return $query->where('nom_prenom', 'like', "%$search%")
+                     ->orWhere('cin_passport', 'like', "%$search%")
+                     ->orWhere('email', 'like', "%$search%");
+>>>>>>> cb156e4 (Premier commit)
     })->paginate(3);
         return view("projet.acteurs.index", compact("acteurs"));
     }
@@ -111,9 +121,15 @@ if ($request->hasFile('photo')) {
     }
 
     $photoName = time() . '.' . $request->photo->extension();
+<<<<<<< HEAD
     $request->photo->storeAs('photos', $photoName, 'public'); 
    } else {
       $photoName = $acteur->photo;
+=======
+    $request->photo->storeAs('photos', $photoName, 'public');
+
+    $acteur->photo = $photoName;
+>>>>>>> cb156e4 (Premier commit)
 }
 
 $acteur->update([
@@ -126,10 +142,16 @@ $acteur->update([
     'email' => $request->email,
     'date_inscription' => $request->date_inscription,
     'statut' => $request->statut,
+<<<<<<< HEAD
     'photo'  => $photoName,
 ]);
 
         // $acteur->save();
+=======
+]);
+
+        $acteur->save();
+>>>>>>> cb156e4 (Premier commit)
 
         return redirect()->route('acteurs.index')
             ->with('success', 'Acteur modifié avec succès.');
@@ -141,7 +163,11 @@ $acteur->update([
         if ($acteur->photo) {
             Storage::disk('public')->delete('photos/' . $acteur->photo);
         }
+<<<<<<< HEAD
         $acteur->groupes()->detach();
+=======
+
+>>>>>>> cb156e4 (Premier commit)
         $acteur->delete();
 
         return redirect()->route('acteurs.index')

@@ -84,9 +84,14 @@ h3{
     <button type="submit" class="btn btn-success">Rechercher</button>
 
 </form>
+<<<<<<< HEAD
     @role('admin|gestionnaire')
        <a class="btn bg-success text-white" href="{{ route('acteurs.create') }}" >Ajouter un nouveau acteur</a>
     
+=======
+    
+       <a class="btn bg-success text-white" href="{{ route('acteurs.create') }}" >Ajouter un nouveau acteur</a>
+>>>>>>> cb156e4 (Premier commit)
 <p>
 
 
@@ -94,7 +99,10 @@ h3{
 <a href="/export-acteurs" class="btn btn-success">
     📥 Exporter Excel
 </a>
+<<<<<<< HEAD
 @endrole
+=======
+>>>>>>> cb156e4 (Premier commit)
     @isset($acteurs)
     <table class="table-acteurs">
         <tr>
@@ -108,9 +116,13 @@ h3{
         <th>Email</th>
         <th>Date d'inscription</th>
         <th>Statut</th>
+<<<<<<< HEAD
         @role('admin|gestionnaire')
         <th>Actions</th>
         @endrole
+=======
+        <th>Actions</th>
+>>>>>>> cb156e4 (Premier commit)
         </tr>
         @foreach ($acteurs as $acteur )
         <tr>
@@ -132,10 +144,16 @@ h3{
                 <td>{{ $acteur->email }}</td>
                 <td>{{ $acteur->date_inscription }}</td>
                 <td>{{ $acteur->statut }}</td>
+<<<<<<< HEAD
                 @role('admin|gestionnaire')
                 <td>
 
 <form method="post" action="{{ route('acteurs.destroy', $acteur->id_acteur) }}">
+=======
+                <td>
+
+<form method="post" action="{{ route('acteurs.destroy', $acteur) }}">
+>>>>>>> cb156e4 (Premier commit)
     @csrf
     @method('DELETE')
     <a href="{{ route('acteurs.show', $acteur) }}" class="btn btn-primary btn-sm">🔍</a>
@@ -144,7 +162,10 @@ h3{
     onclick="return confirm('Confirmez vous la suppression de ce acteur?')" />
 </form>
  </td>
+<<<<<<< HEAD
                 @endrole
+=======
+>>>>>>> cb156e4 (Premier commit)
         </tr> 
         @endforeach
 
